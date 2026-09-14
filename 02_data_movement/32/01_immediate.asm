@@ -1,7 +1,12 @@
-; nasm -f elf32 01_immediate.asm && ld -m elf_i386 01_immediate.o && ./a.out
+; nasm -f elf32 -g -F dwarf 01_immediate.asm -o 01_immediate.o && ld -m elf_i386 01_immediate.o -o 01_immediate && ./01_immediate
 ; nasm -f elf32 01_immediate.asm    --- assemble file
 ; ld -m elf_i386 01_immediate.o     --- link
 ; ./a.out                           ---run
+
+section .data
+num1 dq 42
+msg db "GDB memory demo", 0
+
 section .text
 global _start
 
